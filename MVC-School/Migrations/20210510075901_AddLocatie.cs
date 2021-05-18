@@ -12,7 +12,7 @@ namespace MVC_School.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Voornaam = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Naam = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Achternaam = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Adres = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     Woonplaats = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true)
