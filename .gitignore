@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+MVC-School/Migrations/SchoolDbContextModelSnapshot.cs
+MVC-School/Migrations/20210510075901_AddLocatie.cs
+MVC-School/Migrations/20210510075901_AddLocatie.Designer.cs
+MVC-School/Migrations/20210510071126_AddStudent.Designer.cs
+MVC-School/Migrations/20210510071126_AddStudent.cs
