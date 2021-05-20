@@ -10,7 +10,7 @@ namespace MVC_School.Models
     {
         public int Id { get; set; }
 
-        [StringLength(20)]
+        [StringLength(30)]
         public string Naam { get; set; }
         
         [StringLength(40)]
