@@ -3,20 +3,47 @@ using MVC_School.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_School.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210604093425_VakStudent")]
+    partial class VakStudent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.5")
+                .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("MVC_School.Models.Docent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Achternaam")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<int>("LocatieId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Voornaam")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocatieId");
+
+                    b.ToTable("Docenten");
+                });
 
             modelBuilder.Entity("MVC_School.Models.Locatie", b =>
                 {
@@ -25,23 +52,13 @@ namespace MVC_School.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Achternaam")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<string>("Adres")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-<<<<<<< Updated upstream
-                    b.Property<string>("Voornaam")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-=======
                     b.Property<string>("Naam")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
->>>>>>> Stashed changes
 
                     b.Property<string>("Woonplaats")
                         .HasMaxLength(40)
@@ -79,8 +96,6 @@ namespace MVC_School.Migrations
 
                     b.ToTable("Studenten");
                 });
-<<<<<<< Updated upstream
-=======
 
             modelBuilder.Entity("MVC_School.Models.Vak", b =>
                 {
@@ -171,7 +186,6 @@ namespace MVC_School.Migrations
                 {
                     b.Navigation("Docenten");
                 });
->>>>>>> Stashed changes
 #pragma warning restore 612, 618
         }
     }

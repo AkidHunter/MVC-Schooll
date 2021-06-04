@@ -11,6 +11,12 @@ namespace MVC_School.Data
     {
         public DbSet<Student> Studenten { get; set; }
         public DbSet<Locatie> Locaties { get; set; }
+<<<<<<< Updated upstream
+=======
+        public DbSet<Docent> Docenten { get; set; }
+        public DbSet<Vak> Vakken { get; set; }
+        public DbSet<VakStudent> VakStudenten { get; set; }
+>>>>>>> Stashed changes
 
         public SchoolDbContext(DbContextOptions<SchoolDbContext> options) : base(options)
         {
@@ -19,6 +25,10 @@ namespace MVC_School.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<VakStudent>()
+                .HasKey(vs => new { vs.StudentId, vs.VakId });
         }
     }
 }
+
