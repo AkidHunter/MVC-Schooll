@@ -28,6 +28,8 @@ namespace MVC_School.Controllers
         // GET: Studenten/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["VakId"] = new SelectList(_context.Vakken, "Id", "Naam");
+            ViewData["StudentId"] = new SelectList(_context.Studenten, "Id", "Naam");
             if (id == null)
             {
                 return NotFound();
@@ -149,5 +151,26 @@ namespace MVC_School.Controllers
         {
             return _context.Studenten.Any(e => e.Id == id);
         }
+
+        //POST: Studenten.AddVak/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddVak(VakStudent vakStudent)
+        {
+            var existingVakStudent = await _context.VakStudenten
+                .FindAsync(vakStudent.StudentId, vakStudent.VakId);
+
+            if (existingVakStudent == null)
+            {
+                _context.Add(vakStudent);
+            }
+            else
+            {
+                existingVakStudent.Uren = vakStudent.Uren;
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Details), new { id = vakStudent.StudentId });
+        }
+
     }
 }
