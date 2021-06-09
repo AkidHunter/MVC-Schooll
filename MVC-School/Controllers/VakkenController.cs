@@ -29,6 +29,7 @@ namespace MVC_School.Controllers
         // GET: Vakken/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["StudentId"] = new SelectList(_context.Studenten, "Id", "Naam");
             if (id == null)
             {
                 return NotFound();
@@ -155,6 +156,15 @@ namespace MVC_School.Controllers
         private bool VakExists(int id)
         {
             return _context.Vakken.Any(e => e.Id == id);
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync(int id)
+        {
+            var vakken = await _context.Vakken
+                .Where(d => d.DocentId == id)
+                .ToListAsync();
+
+            return (IViewComponentResult)View(vakken);
         }
     }
 }

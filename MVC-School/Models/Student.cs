@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_School.Models
 {
@@ -15,6 +16,9 @@ namespace MVC_School.Models
 
         [StringLength(40)]
         public string Achternaam { get; set; }
+
+        [NotMapped]
+        public string Naam => $"{Voornaam} {Achternaam}";
 
         [StringLength(40)]
         public string Adres { get; set; }

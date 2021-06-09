@@ -29,7 +29,6 @@ namespace MVC_School.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             ViewData["VakId"] = new SelectList(_context.Vakken, "Id", "Naam");
-            ViewData["StudentId"] = new SelectList(_context.Studenten, "Id", "Naam");
             if (id == null)
             {
                 return NotFound();

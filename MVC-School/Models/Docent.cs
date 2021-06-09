@@ -29,5 +29,6 @@ namespace MVC_School.Models
         public virtual Locatie Locatie { get; set; }
 
         public ICollection<Vak> Vakken { get; set; }
+
     }
 }
